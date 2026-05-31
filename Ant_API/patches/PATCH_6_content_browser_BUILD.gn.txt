@@ -1,0 +1,4 @@
+FILE: content/browser/BUILD.gn
+
+Inside source_set("browser") { deps = [...] } add:
+  "//content/browser/ant",

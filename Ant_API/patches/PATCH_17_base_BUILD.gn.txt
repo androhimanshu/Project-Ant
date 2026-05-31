@@ -1,0 +1,5 @@
+FILE: base/BUILD.gn
+
+Inside component("base") { sources = [...] } add:
+  "ant_values.cc",
+  "ant_values.h",

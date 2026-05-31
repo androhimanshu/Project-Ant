@@ -1,0 +1,4 @@
+FILE: third_party/blink/public/mojom/BUILD.gn
+
+Inside mojom("mojom_platform") { sources = [...] } add:
+  "ant/ant_service.mojom",

@@ -1,0 +1,4 @@
+FILE: third_party/blink/renderer/bindings/idl_in_modules.gni
+
+Inside static_idl_files_in_modules = [...] add:
+  "//third_party/blink/renderer/modules/ant/ant.idl",

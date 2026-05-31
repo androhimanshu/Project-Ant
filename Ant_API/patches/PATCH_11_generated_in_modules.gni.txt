@@ -1,0 +1,8 @@
+FILE: third_party/blink/renderer/bindings/generated_in_modules.gni
+
+⚠️ APPLY ONLY AFTER FIRST BUILD ATTEMPT.
+v8_ant.cc and v8_ant.h are auto-generated and won't exist before then.
+
+Inside generated_namespace_sources_in_modules = [...] add:
+  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ant.cc",
+  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ant.h",

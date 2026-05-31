@@ -1,0 +1,28 @@
+FILE: third_party/blink/renderer/core/exported/web_v8_features.cc
+
+CHANGE A — Add static global AFTER the closing }  // namespace of the anonymous
+           block but BEFORE the first method, still inside namespace blink.
+           Use blink::AntContextEnabledCallback (NOT WebV8Features::):
+
+  static blink::AntContextEnabledCallback g_ant_context_enabled_callback = nullptr;
+
+CHANGE B — Add before closing }  // namespace blink:
+
+  // static
+  void WebV8Features::SetAntContextEnabledCallback(
+      blink::AntContextEnabledCallback callback) {
+    g_ant_context_enabled_callback = callback;
+  }
+
+  // static
+  void WebV8Features::EnableAnt(v8::Local<v8::Context> context, bool enable) {
+    v8::Isolate* isolate = context->GetIsolate();
+    ScriptState* script_state = ScriptState::From(isolate, context);
+    ContextFeatureSettings::From(
+        ExecutionContext::From(script_state),
+        ContextFeatureSettings::CreationMode::kCreateIfNotExists)
+        ->EnableAnt(enable);
+    if (enable && g_ant_context_enabled_callback) {
+      g_ant_context_enabled_callback(context);
+    }
+  }

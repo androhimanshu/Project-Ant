@@ -1,0 +1,12 @@
+FILE: third_party/blink/renderer/platform/runtime_enabled_features.json5
+
+Inside data: [...] add (alphabetical order, between existing A entries):
+  {
+    name: "Ant",
+    base_feature: "none",
+  },
+
+NOTE: No "status" field = disabled globally by default.
+      base_feature:"none" prevents command-line toggling.
+      Ant namespace is only enabled per-context via ContextEnabled=Ant
+      + WebV8Features::EnableAnt() in render_frame_impl.cc.

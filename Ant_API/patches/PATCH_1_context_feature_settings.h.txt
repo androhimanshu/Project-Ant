@@ -1,0 +1,9 @@
+FILE: third_party/blink/renderer/core/context_features/context_feature_settings.h
+
+CHANGE A — Add to public section after isPrivateAggregationInSharedStorageEnabled():
+  // ContextEnabled=Ant
+  void EnableAnt(bool enable) { enable_ant_ = enable; }
+  bool isAntEnabled() const { return enable_ant_; }
+
+CHANGE B — Add to private section after enable_private_aggregation_in_shared_storage_:
+  bool enable_ant_ = false;

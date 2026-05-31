@@ -1,0 +1,8 @@
+FILE: third_party/blink/public/web/web_v8_features.h
+
+CHANGE A — Add typedef OUTSIDE the WebV8Features class (at namespace blink scope):
+  using AntContextEnabledCallback = void(*)(v8::Local<v8::Context>);
+
+CHANGE B — Add INSIDE the WebV8Features class public section:
+  static void EnableAnt(v8::Local<v8::Context>, bool);
+  static void SetAntContextEnabledCallback(AntContextEnabledCallback callback);

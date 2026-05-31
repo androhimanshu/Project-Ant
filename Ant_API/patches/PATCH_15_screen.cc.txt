@@ -1,0 +1,17 @@
+FILE: third_party/blink/renderer/core/frame/screen.cc
+
+Run first to find exact method names:
+  grep -n "Screen::" ~/projects/chromium/src/third_party/blink/renderer/core/frame/screen.cc | head -20
+
+CHANGE A — Add include:
+  #include "third_party/blink/renderer/modules/ant/ant.h"
+
+CHANGE B — Add at top of height() method body:
+  int32_t ant_h = Ant::GetCachedScreenH();
+  if (ant_h > 0) return ant_h;
+  // original code below
+
+CHANGE C — Add at top of width() method body:
+  int32_t ant_w = Ant::GetCachedScreenW();
+  if (ant_w > 0) return ant_w;
+  // original code below

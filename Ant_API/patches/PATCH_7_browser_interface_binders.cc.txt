@@ -1,0 +1,9 @@
+FILE: content/browser/browser_interface_binders.cc
+
+CHANGE A — Add include:
+  #include "content/browser/ant/ant_service_impl.h"
+
+CHANGE B — Inside PopulateFrameBinders() add:
+  map->Add<blink::mojom::AntService>(base::BindRepeating(
+      &content::AntServiceImpl::BindReceiver,
+      base::Unretained(content::AntServiceImpl::GetInstance())));

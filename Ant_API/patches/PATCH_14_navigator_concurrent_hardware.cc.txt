@@ -1,0 +1,11 @@
+FILE: third_party/blink/renderer/core/frame/navigator_concurrent_hardware.cc
+
+CHANGE A — Add include:
+  #include "third_party/blink/renderer/modules/ant/ant.h"
+
+CHANGE B — Replace hardwareConcurrency() body:
+  unsigned int NavigatorConcurrentHardware::hardwareConcurrency() const {
+    int32_t v = Ant::GetCachedCpu();
+    if (v > 0) return static_cast<unsigned int>(v);
+    return base::SysInfo::NumberOfProcessors();
+  }

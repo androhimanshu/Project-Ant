@@ -1,0 +1,19 @@
+FILE: base/version_info/version_info.cc
+
+CHANGE A — Add include:
+  #include "base/ant_values.h"
+
+CHANGE B — At the top of whichever function returns base::Version,
+           add BEFORE the original return:
+
+  const base::Version& bv = base::AntValues::GetInstance()->bversion_parsed;
+  if (bv.IsValid())
+    return bv;
+  // original return below
+
+NOTE: bversion_parsed is set when SetBversion() is called from JS.
+      Must be in dotted number format e.g. "120.0.6099.71"
+      Default is "0.0.0.0" which IsValid() returns true for.
+      If you only want override when explicitly set, check the string:
+        if (!base::AntValues::GetInstance()->bversion.empty() && bv.IsValid())
+          return bv;

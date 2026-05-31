@@ -1,0 +1,12 @@
+FILE: third_party/blink/renderer/modules/modules_initializer.cc
+
+CHANGE A — Add include:
+  #include "third_party/blink/renderer/modules/ant/ant_module_initializer.h"
+
+CHANGE B — Inside ModulesInitializer::Initialize() add:
+  AntModuleInitializer::Initialize();
+
+CHANGE C — Inside ModulesInitializer::InstallSupplements(LocalFrame& frame) add
+           at the top of the function (already done if you followed previous steps):
+  if (frame.GetDocument())
+    AntModuleInitializer::OnDocumentCreated(*frame.GetDocument());

@@ -1,0 +1,25 @@
+FILE: content/renderer/render_frame_impl.cc
+
+CHANGE A — Add include near top if not present:
+  #include "url/origin.h"
+
+CHANGE B — Add after the MojoJS block inside DidCreateScriptContext():
+  // Ant API — enable JS namespace only for allowed origins.
+  // navigator.deviceMemory and other overrides work on ALL origins.
+  if (world_id == ISOLATED_WORLD_ID_GLOBAL) {
+    // ── EDIT THIS LIST ─────────────────────────────────────────────────────
+    static const char* const kAntAllowedOrigins[] = {
+      "https://example.com",
+      "https://app.example.com",
+      // "http://localhost:3000",  // dev only — remove before shipping
+    };
+    // ───────────────────────────────────────────────────────────────────────
+    GURL doc_url(GetWebFrame()->GetDocument().Url());
+    std::string doc_origin = url::Origin::Create(doc_url).Serialize();
+    for (const char* allowed : kAntAllowedOrigins) {
+      if (doc_origin == allowed) {
+        blink::WebV8Features::EnableAnt(context, true);
+        break;
+      }
+    }
+  }
