@@ -1,0 +1,40 @@
+[
+    Exposed=Window,
+    RuntimeEnabled=Ant,
+    ContextEnabled=Ant
+] namespace Ant {
+    [CallWith=ScriptState] DOMString getTag();
+
+    [CallWith=ScriptState] Promise<DOMString> setValue(long value);
+    [CallWith=ScriptState] Promise<long>      getValue();
+
+    [CallWith=ScriptState] Promise<DOMString> setString(DOMString text);
+    [CallWith=ScriptState] Promise<DOMString> getString();
+
+    [CallWith=ScriptState] Promise<DOMString> setGpu(DOMString value);
+    [CallWith=ScriptState] Promise<DOMString> getGpu();
+
+    [CallWith=ScriptState] Promise<DOMString> setModel(DOMString value);
+    [CallWith=ScriptState] Promise<DOMString> getModel();
+
+    [CallWith=ScriptState] Promise<DOMString> setAversion(DOMString value);
+    [CallWith=ScriptState] Promise<DOMString> getAversion();
+
+    [CallWith=ScriptState] Promise<DOMString> setBversion(DOMString value);
+    [CallWith=ScriptState] Promise<DOMString> getBversion();
+
+    [CallWith=ScriptState] Promise<DOMString> setVendor(DOMString value);
+    [CallWith=ScriptState] Promise<DOMString> getVendor();
+
+    [CallWith=ScriptState] Promise<DOMString> setCpu(long value);
+    [CallWith=ScriptState] Promise<long>      getCpu();
+
+    [CallWith=ScriptState] Promise<DOMString> setBrand(DOMString value);
+    [CallWith=ScriptState] Promise<DOMString> getBrand();
+
+    [CallWith=ScriptState] Promise<DOMString> setScreenH(long value);
+    [CallWith=ScriptState] Promise<long>      getScreenH();
+
+    [CallWith=ScriptState] Promise<DOMString> setScreenW(long value);
+    [CallWith=ScriptState] Promise<long>      getScreenW();
+};

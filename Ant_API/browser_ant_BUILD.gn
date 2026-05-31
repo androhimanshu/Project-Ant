@@ -1,0 +1,14 @@
+import("//build/config/features.gni")
+
+source_set("ant") {
+  sources = [
+    "ant_service_impl.cc",
+    "ant_service_impl.h",
+  ]
+  deps = [
+    "//base",
+    "//content/common",
+    "//mojo/public/cpp/bindings",
+    "//third_party/blink/public/mojom:mojom_platform",
+  ]
+}

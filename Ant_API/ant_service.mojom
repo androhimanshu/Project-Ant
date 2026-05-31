@@ -1,0 +1,32 @@
+module blink.mojom;
+
+interface AntValueObserver {
+  OnValueChanged(int32 new_value);
+  OnStringChanged(string new_string);
+};
+
+interface AntService {
+  SetValue(int32 value)     => (string message);
+  GetValue()                => (int32 value);
+  AddObserver(pending_remote<AntValueObserver> observer);
+  SetString(string text)    => (string message);
+  GetString()               => (string text);
+  SetGpu(string value)      => (string message);
+  GetGpu()                  => (string value);
+  SetModel(string value)    => (string message);
+  GetModel()                => (string value);
+  SetAversion(string value) => (string message);
+  GetAversion()             => (string value);
+  SetBversion(string value) => (string message);
+  GetBversion()             => (string value);
+  SetVendor(string value)   => (string message);
+  GetVendor()               => (string value);
+  SetCpu(int32 value)       => (string message);
+  GetCpu()                  => (int32 value);
+  SetBrand(string value)    => (string message);
+  GetBrand()                => (string value);
+  SetScreenH(int32 value)   => (string message);
+  GetScreenH()              => (int32 value);
+  SetScreenW(int32 value)   => (string message);
+  GetScreenW()              => (int32 value);
+};
